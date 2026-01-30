@@ -1,82 +1,73 @@
-# VS Code MSSQL Extension - Lab Prerequisites
+# Lab Setup Guide
 
-**30-second overview:** Install VS Code, Docker Desktop, and the MSSQL extension. Then create a local SQL Server container and load the AdventureWorks sample database.
+Set up a local SQL Server with a sample database for the user research session.
 
-**Expected time:** 10–15 minutes
-
----
-
-## Prerequisites
-
-1. **Visual Studio Code**
-   Download: https://code.visualstudio.com
-
-2. **Docker Desktop**
-   Download: https://www.docker.com/products/docker-desktop
-
-3. **SQL Server (mssql) Extension**
-   - Open VS Code
-   - Open Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-   - Search "SQL Server (mssql)"
-   - Click **Install**
+**Time required:** ~10 minutes
 
 ---
 
-## Setup Steps
+## Before You Start
 
-### Step 1: Create a Local SQL Server Container
+Make sure you have these installed:
 
-1. In the **SQL Server** view, expand **Connections**
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) — must be **running**
+
+---
+
+## Step 1: Install the SQL Server Extension
+
+1. Open VS Code
+2. Press `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (Mac) to open Extensions
+3. Search **SQL Server (mssql)**
+4. Click **Install**
+
+---
+
+## Step 2: Create a Local SQL Server Container
+
+1. In VS Code, find the **SQL Server** panel in the left sidebar
 2. Click **New Deployment**
 
-   ![New Deployment](assets/images/image1.png)
+   ![New Deployment button](assets/images/image1.png)
 
 3. Select **Create a Local Docker SQL Server**
+4. Click **Get Started**, then **Next** after Docker checks pass
+5. Configure your container:
 
-   ![Select Local Docker](assets/images/image2.png)
+   ![Container settings](assets/images/image5.png)
 
-4. Review the overview, then click **Get Started**
+   | Setting | What to enter |
+   |---------|---------------|
+   | **SQL Server version** | Windows/Linux: `SQL Server 2025 - latest`<br>Mac: `SQL Server 2022 - latest` |
+   | **Password** | Choose a password (you'll need this later) |
+   | **License terms** | Check to accept |
 
-   ![Overview](assets/images/image3.png)
+6. Click **Create Container** and wait for it to finish
 
-5. Wait for Docker checks to complete, then click **Next**
+---
 
-   ![Docker Check](assets/images/image4.png)
+## Step 3: Create the Sample Database
 
-6. Configure deployment settings:
-
-   ![Settings](assets/images/image5.png)
-
-   - **SQL Server version:**
-     - Windows/Linux: `SQL Server 2025 - latest`
-     - macOS: `SQL Server 2022 - latest` (2025 not supported)
-   - **Password:** Enter an SA password
-   - **Accept license terms**
-   - Click **Create Container**
-
-### Step 2: Load AdventureWorks Database
-
-1. Download the SQL script: [AdventureWorksLT2022.sql](https://gist.github.com/croblesm/25c526d206ae1402b555837e9f17a302)
-2. Open the file in VS Code
-3. Connect to your local SQL Server
-4. Execute the script (~2 minutes)
+1. Open the file [`scripts/AdventureWorksLT2022.sql`](scripts/AdventureWorksLT2022.sql) in VS Code
+2. When prompted, connect to your local SQL Server
+3. Run the script (`Ctrl+Shift+E` or click **Run**)
+4. Wait ~2 minutes for it to complete
 
 ---
 
 ## Troubleshooting
 
-- **Docker not installed:** Download from https://www.docker.com/products/docker-desktop
-- **Docker not running:** Start Docker Desktop before proceeding
-- **Extension conflicts:** Disable non-essential VS Code extensions
-- **Script takes too long:** Script execution typically takes ~2 minutes
+| Problem | Solution |
+|---------|----------|
+| Docker not running | Open Docker Desktop and wait for it to start |
+| Can't find SQL Server panel | Make sure the extension installed correctly |
+| Script runs slowly | This is normal — it takes about 2 minutes |
+| Other extensions interfering | Try disabling non-essential extensions |
 
 ---
 
-## Resources
+## Need Help?
 
-- [Container Demo (YouTube)](http://aka.ms/vscode-mssql-container-demo)
-- [Container Documentation](http://aka.ms/vscode-mssql-container-docs)
-
----
-
-For detailed instructions, see [docs/lab-prereq.md](docs/lab-prereq.md).
+- [Video walkthrough](http://aka.ms/vscode-mssql-container-demo)
+- [Documentation](http://aka.ms/vscode-mssql-container-docs)
